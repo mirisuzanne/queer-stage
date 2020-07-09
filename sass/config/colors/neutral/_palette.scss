@@ -1,0 +1,15 @@
+@use 'sass:map';
+@use 'sass:meta';
+@use '../../tools';
+@use 'base';
+
+$colors: (
+  white: '#gray-tint-6',
+  black: '#gray-shade-6',
+  _contrast-dark: '#black',
+  _contrast-light: '#white',
+);
+
+@each $name, $color in meta.module-variables('base') {
+  $colors: map.merge($colors, tools.palette($name, $color));
+}

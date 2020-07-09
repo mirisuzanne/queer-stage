@@ -1,0 +1,52 @@
+@use 'sass:map';
+
+$_variants: (
+  body: (
+    --mono: 0,
+    --casl: 0,
+    --wght: 400,
+    --slnt: 0,
+    --ital: 0.5,
+  ),
+  code: (
+    --mono: 1,
+  ),
+  italic: (
+    font-style: italic,
+    --slnt: -15,
+  ),
+  fun: (
+    --casl: 1,
+  ),
+  light: (
+    font-weight: 200,
+    --wght: 200,
+  ),
+  bold: (
+    font-weight: bold,
+    --wght: 600,
+  ),
+  extra: (
+    font-weight: bold,
+    --wght: 1000,
+  ),
+);
+
+@mixin font-settings($name, $settings: true) {
+  @if ($settings) {
+    font-variation-settings: 'MONO' var(--mono), 'CASL' var(--casl),
+      'wght' var(--wght), 'slnt' var(--slnt), 'ital' var(--ital);
+  }
+
+  $name: if($name, $name, ('body'));
+  $map: ();
+
+  @each $var in $name {
+    $var: map.get($_variants, $var);
+    $map: map.merge($map, $var);
+  }
+
+  @each $prop, $val in $map {
+    #{$prop}: #{$val};
+  }
+}

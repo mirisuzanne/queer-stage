@@ -1,0 +1,13 @@
+%section {
+  --dir: 1;
+  transform: skew(calc(-2deg * var(--dir)));
+  padding: 0 var(--gutter);
+
+  &:nth-of-type(even) {
+    --dir: -1;
+  }
+
+  > * {
+    transform: skew(calc(2deg * var(--dir)));
+  }
+}

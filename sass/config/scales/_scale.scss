@@ -1,0 +1,99 @@
+@use '../tools';
+
+/// # Spacing & Size Config
+/// Accoutrement maps for storing global spacing and size tokens.
+/// @link https://www.oddbird.net/accoutrement/docs/scale.html
+///   Accoutrement Scale
+/// @group config-scale
+
+// Line Height
+// -----------
+/// Going for a readable line-height
+/// that adapts to context
+/// @ratios
+/// @group config-scale
+$my-ratios: (
+  'line-height': 1.4,
+);
+
+@include tools.add('ratios', 'my-ratios', $my-ratios);
+
+// Font Sizes
+// ----------
+/// @sizes {text}
+/// @group config-scale
+$font-sizes: (
+  'small': 0.8rem,
+  'xsmall': 0.7rem,
+  'rem': calc(1.25em + 0.5vw),
+  'medium': 1.25rem,
+  'large': calc(1.25rem + 0.5vw),
+  'xlarge': calc(var(--xbase, 2rem) + var(--xscale, 2vmin)),
+  'h1': '#xlarge',
+  'h2': '#large',
+  'h3': '#medium',
+  'code': 0.9em,
+);
+
+@include tools.add('sizes', 'font-sizes', $font-sizes);
+
+// Spacing Sizes
+// -------------
+/// @sizes {ruler-large}
+/// @group config-scale
+$spacing-sizes: (
+  'gutter': 0.75rem,
+  'newline--default': '#gutter',
+  'newline': '#newline--default',
+  'gutter-plus': '#gutter' ('times': 1.5),
+  'double-gutter': '#gutter' ('times': 2),
+  'triple-gutter': '#gutter' ('times': 3),
+  'shim': '#gutter' ('divide': 2),
+  'shim-plus': '#gutter' ('times': 0.75),
+  'half-shim': '#gutter' ('divide': 4),
+  'quarter-shim': '#gutter' ('divide': 8),
+  'spacer': calc(var(--double-gutter) + 3vw),
+);
+
+@include tools.add('sizes', 'spacing-sizes', $spacing-sizes);
+
+// Theme Sizes
+// -----------
+// Mostly used as breakpoints when content is asking for css edits
+/// @sizes {ruler-large}
+/// @group config-scale
+$theme-sizes: (
+  'page-margin': calc(var(--quarter-shim) + 4vw),
+  'border-width': medium,
+  'radius': var(--half-shim),
+);
+
+@include tools.add('sizes', 'theme-sizes', $theme-sizes);
+
+// Page Sizes
+// ----------
+// Mostly used as breakpoints when content is asking for css edits
+/// @sizes {output-only}
+/// @group config-scale
+$page-sizes: (
+  'grid-item': 16rem,
+  'min-page': 22rem,
+  'page': 30rem,
+  'wide-page': 38rem,
+  'wide-break': 58em,
+);
+
+@include tools.add('sizes', 'page-sizes', $page-sizes);
+
+// Breakpoints
+// -----------
+
+@each $name, $size in $page-sizes {
+  $size: tools.convert-units($size, 'em');
+  tools.$breakpoints: map-merge(
+    tools.$breakpoints,
+    (
+      $name: $size,
+    )
+  );
+}

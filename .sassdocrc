@@ -1,0 +1,13 @@
+theme: herman
+dest: docs/
+src: sass/
+
+herman:
+  sass:
+    implementation: sass
+    includepaths: ['sass']
+    use: ['tools']
+    jsonfile: 'assets/css/json.css'
+  extraLinks:
+    - name: 'LCH Color Picker'
+      url: 'https://css.land/lch/'

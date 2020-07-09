@@ -1,0 +1,10 @@
+@use 'sass:map';
+@use 'sass:meta';
+@use '../../tools';
+@use 'base';
+
+$colors: ();
+
+@each $name, $color in meta.module-variables('base') {
+  $colors: map.merge($colors, tools.palette($name, $color));
+}

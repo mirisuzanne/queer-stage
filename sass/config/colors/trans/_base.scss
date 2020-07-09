@@ -1,0 +1,4 @@
+@use '../../tools';
+
+$pink: tools.lch(50% 60 345);
+$blue: tools.adjust($pink, $hue: -120);

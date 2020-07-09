@@ -1,0 +1,46 @@
+@use '../config';
+
+.skip-link {
+  &:link,
+  &:visited {
+    background: var(--outer-bg, var(--line-focus));
+    display: block;
+    box-shadow: var(--outer-shadow, --shadow);
+    left: 0;
+    padding: var(--shim-plus) var(--gutter);
+    position: fixed;
+    text-decoration: none;
+    top: var(--double-gutter);
+    transform: translateX(-110%);
+    transition: transform 150ms ease-in-out;
+    z-index: 10;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    transform: translateX(0);
+  }
+
+  @supports (clip-path: inset(0)) {
+    --outline: none;
+    --outer-shadow: none;
+    --outer-bg: transparent;
+    filter: drop-shadow(var(--shadow-fg));
+
+    &::before {
+      @include config.position(0);
+      background: var(--line-focus);
+      clip-path: polygon(
+        0 0,
+        30% var(--quarter-shim),
+        calc(100% - var(--shim)) 0,
+        100% 100%,
+        60% calc(100% - var(--half-shim)),
+        0 100%,
+      );
+      content: '';
+      z-index: -1;
+    }
+  }
+}

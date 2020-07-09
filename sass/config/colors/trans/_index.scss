@@ -1,0 +1,12 @@
+@use 'sass:meta';
+@use '../../tools';
+@use 'base';
+@use 'palette';
+
+/// @group config-colors-trans
+/// @colors trans-base
+@include tools.add('colors', 'trans-base', meta.module-variables('base'));
+
+/// @group config-colors-trans
+/// @colors trans-palette
+@include tools.add('colors', 'trans-palette', palette.$colors);

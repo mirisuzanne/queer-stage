@@ -1,0 +1,45 @@
+@use '../config';
+
+header {
+  padding: var(--page-margin);
+
+  .container {
+    display: grid;
+    grid-template-rows: 1fr;
+    justify-content: center;
+    min-height: 90vh;
+  }
+}
+
+h1 {
+  @include config.font-settings('extra');
+  filter: drop-shadow(var(--shadow-bg));
+  font-size: config.size('h1');
+  place-self: center;
+  text-align: center;
+  text-transform: uppercase;
+  transform: rotate(var(--rotate, -3deg));
+  transition: font-variation-settings 400ms ease-in-out;
+
+  &:hover {
+    @include config.font-settings('fun');
+  }
+
+  @supports (background-clip: text) {
+    background: var(--fancy);
+    color: transparent;
+    background-clip: text;
+    box-decoration-break: clone;
+  }
+
+  @include config.above('wide-page') {
+    --xbase: 2.5rem;
+    --xscale: 3vw;
+    --rotate: -6deg;
+  }
+
+  @include config.above('wide-break') {
+    --xbase: 4rem;
+    --rotate: -12deg;
+  }
+}

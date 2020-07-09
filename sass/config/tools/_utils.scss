@@ -1,0 +1,37 @@
+@use 'sass:list';
+@use 'sass:meta';
+@use 'tools';
+
+@mixin add(
+  $type,
+  $name,
+  $map,
+) {
+  $function: null;
+
+  @if ($type == 'colors') {
+    @include tools.add-colors($map);
+    $function: 'color';
+  } @else if ($type == 'font') {
+    @include tools.add-font($name, $map);
+    $function: 'font';
+  } @else if ($type == 'ratios') {
+    @include tools.add-ratios($map);
+  } @else if ($type == 'sizes') {
+    @include tools.add-sizes($map);
+    $function: 'size';
+  }
+
+  $args: (
+    $type,
+    $name,
+    $map,
+  );
+
+  @if ($function) {
+    $function: meta.get-function($function, $module: 'tools');
+    $args: list.append($args, $function);
+  }
+
+  @include tools.herman-add($args...);
+}

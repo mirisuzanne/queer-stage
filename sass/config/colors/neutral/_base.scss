@@ -1,0 +1,4 @@
+@use '../../tools';
+@use '../trans/base' as trans;
+
+$gray: tools.set(trans.$blue, $chroma: 3);

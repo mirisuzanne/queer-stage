@@ -1,0 +1,52 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:math';
+@use 'sass:meta';
+@use 'tools';
+
+@function mix(
+  $base,
+  $mix
+) {
+  @return tools.lch(
+    (tools.lightness($base) + tools.lightness($mix)) / 2
+    (tools.chroma($base) + tools.chroma($mix)) / 2
+    (tools.hue($base) + tools.hue($mix)) / 2
+  );
+}
+
+@function stripes($position, $colors) {
+  $colors: if(meta.type-of($colors) != 'list', ($colors,), $colors);
+  $gradient: ();
+  $width: 100% / list.length($colors);
+
+  @for $i from 1 through list.length($colors) {
+    $pop: list.nth($colors, $i);
+    $new: $pop ($width * ($i - 1)), $pop ($width * $i);
+    $gradient: list.join($gradient, $new, comma);
+  }
+
+  @return linear-gradient($position, $gradient);
+}
+
+@function palette(
+  $name,
+  $source,
+  $steps: 6,
+) {
+  $colors: ();
+
+  @for $i from ($steps * -1) through $steps {
+    @if ($i == 0) {
+      $colors: map.merge($colors, ($name: $source));
+    } @else {
+      $scale: math.percentage(math.abs($i) / ($steps + 0.5)) * ($i / math.abs($i));
+      $new: '#{$name}-#{if($i < 0, 'shade', 'tint')}-#{math.abs($i)}';
+      $colors: map.merge($colors, (
+        $new: tools.scale($source, $lightness: $scale)
+      ));
+    }
+  }
+
+  @return $colors;
+}

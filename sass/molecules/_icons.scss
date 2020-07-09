@@ -1,0 +1,40 @@
+svg {
+  display: inline-block;
+  fill: currentColor;
+  height: 1em;
+  margin-right: var(--icon-space);
+  width: 1em;
+}
+
+.link-github {
+  &:link,
+  &:visited {
+    --link: var(--line-focus);
+    --link-focus: var(--link);
+    --icon-space: 0.4em;
+    align-items: center;
+    background: var(--fancy);
+    border-radius: var(--radius);
+    display: inline-flex;
+    justify-content: center;
+    padding: var(--shim) var(--gutter);
+    text-decoration: none;
+    transition: box-shadow 150ms ease-out;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    box-shadow: var(--shadow-bg);
+    --fancy-1-focus: var(--fancy-2);
+    --fancy-2-focus: var(--fancy-1);
+  }
+
+  &:active {
+    box-shadow: 0 0 var(--half-shim) var(--black) inset;
+  }
+
+  span {
+    display: contents;
+  }
+}

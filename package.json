@@ -1,0 +1,24 @@
+{
+  "name": "@mirisuzanne/style-stage",
+  "title": "Queer AF",
+  "version": "1.0.0",
+  "description": "nothing much",
+  "main": "index.html",
+  "author": "Miriam Suzanne",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "docs": "sassdoc sass/",
+    "sass": "sass sass/:css/",
+    "build": "yarn sass; yarn docs",
+    "watch": "sass --watch sass/:assets/css/"
+  },
+  "devDependencies": {
+    "accoutrement": "^2.1.3",
+    "cssremedy": "^0.1.0-beta.2",
+    "@oddbird/blend": "^0.2.2",
+    "sass": "^1.26.9",
+    "sassdoc": "^2.7.2",
+    "sassdoc-theme-herman": "^3.2.0"
+  }
+}

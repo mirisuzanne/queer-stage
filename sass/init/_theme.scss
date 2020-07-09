@@ -1,0 +1,75 @@
+@use '../config';
+
+$trans-flag: (
+  var(--blue-tint-4),
+  var(--pink-tint-4),
+  var(--gray-tint-5),
+  var(--pink-tint-4),
+  var(--blue-tint-4),
+);
+
+$gay-flag: (
+  var(--black),
+  var(--orange-shade-4),
+  var(--red-shade-2),
+  var(--orange),
+  var(--yellow-tint-1),
+  var(--green-shade-1),
+  var(--blue-shade-1),
+  var(--indigo-shade-1),
+  var(--violet-shade-1),
+);
+
+$light: (
+  'bg': var(--gray-tint-5),
+  'text': var(--gray-shade-5),
+  'action': var(--pink-shade-4),
+  'focus': var(--blue-shade-5),
+  'line-default': var(--blue-shade-1),
+  'line-focus': var(--pink-tint-5),
+  'fancy-1': var(--blue-shade-3),
+  'fancy-2': var(--pink-shade-3),
+);
+
+@include config.add('colors', 'light-theme', $light);
+
+$dark: (
+  'bg': var(--blue-shade-5),
+  'text': var(--gray-tint-5),
+  'action': var(--pink-tint-4),
+  'focus': var(--blue-tint-5),
+  'line-default': var(--blue-tint-1),
+  'line-focus': var(--pink-shade-5),
+  'fancy-1': var(--pink-tint-4),
+  'fancy-2': var(--blue-tint-4),
+);
+
+* {
+  --depths: var(--depth, var(--half-shim)) var(--depth, var(--half-shim));
+  --shadow-fg: var(--depths) 0 var(--action);
+  --shadow-bg: var(--depths) 0 var(--bg);
+  --fancy: linear-gradient(
+    to bottom right,
+    var(--fancy-1-focus, var(--fancy-1)),
+    var(--fancy-2-focus, var(--fancy-2))
+  );
+}
+
+html {
+  @include config.colors--();
+  --trans-flag: #{config.stripes(to bottom left, $trans-flag)};
+  --gay-flag: #{config.stripes(to bottom left, $gay-flag)};
+
+  // light mode
+  @include config.colors--($light);
+  --flag: var(--trans-flag);
+
+  @media (prefers-color-scheme: dark) {
+    @include config.colors--($dark);
+    --flag: var(--gay-flag);
+  }
+
+  @include config.above('wide-page') {
+    --depth: var(--shim);
+  }
+}

@@ -1,0 +1,17 @@
+@use '../config';
+
+html {
+  @include config.sizes--();
+  @include config.font-family('static');
+  background: var(--flag) var(--bg) no-repeat fixed;
+  color: var(--text);
+  font-feature-settings: 'dlig' 1, 'liga' 1;
+  font-size: config.size('rem');
+  font-synthesis: none;
+  line-height: config.ratio('line-height');
+
+  @supports (font-variation-settings: normal) {
+    @include config.font-family('recursive');
+    @include config.font-settings('body');
+  }
+}

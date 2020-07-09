@@ -1,0 +1,57 @@
+@use '../config';
+
+body {
+  display: grid;
+  grid-row-gap: var(--spacer);
+  grid-template-areas:
+    'l head r'
+    'l nav r'
+    'l main r'
+    'l now r'
+    'l next r'
+    'l foot r'
+  ;
+  grid-template-columns:
+    var(--page-margin) auto var(--page-margin)
+  ;
+  justify-content: center;
+
+  @include config.above('wide-break') {
+    grid-template:
+      'l1  head head head r' auto
+      'nav nav  main .    r' 1fr
+      'l2  now  main .    r' auto
+      'l2  next next next r' auto
+      'l2  foot foot foot r' minmax(auto, 100vh)
+    / var(--page-margin)
+      3fr
+      fit-content(var(--page))
+      1fr
+      var(--page-margin)
+    ;
+  }
+}
+
+header {
+  grid-area: head;
+}
+
+nav {
+  grid-area: nav;
+}
+
+main {
+  grid-area: main;
+}
+
+.profile {
+  grid-area: now;
+}
+
+[id='styles'] {
+  grid-area: next;
+}
+
+.page-footer {
+  grid-area: foot;
+}

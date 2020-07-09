@@ -1,0 +1,12 @@
+@use '../../tools';
+@use '../trans/base' as trans;
+
+$_violet: tools.set(trans.$blue, $hue: tools.hue(violet));
+
+$red: tools.set(trans.$blue, $hue: tools.hue(red));
+$orange: tools.set(trans.$blue, $hue: tools.hue(orange));
+$yellow: tools.set(trans.$blue, $hue: tools.hue(yellow));
+$green: tools.set(trans.$blue, $hue: tools.hue(green));
+$blue: trans.$blue;
+$indigo: tools.mix(trans.$blue, $_violet);
+$violet: $_violet;
