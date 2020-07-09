@@ -23,8 +23,8 @@ $gay-flag: (
 $light: (
   'bg': var(--gray-tint-5),
   'text': var(--gray-shade-5),
-  'action': var(--pink-shade-4),
-  'focus': var(--blue-shade-5),
+  'action': var(--pink-shade-5),
+  'focus': var(--blue-shade-6),
   'line-default': var(--blue-shade-1),
   'line-focus': var(--pink-tint-5),
   'fancy-1': var(--blue-shade-3),
@@ -36,8 +36,8 @@ $light: (
 $dark: (
   'bg': var(--blue-shade-5),
   'text': var(--gray-tint-5),
-  'action': var(--pink-tint-4),
-  'focus': var(--blue-tint-5),
+  'action': var(--pink-tint-5),
+  'focus': var(--blue-tint-6),
   'line-default': var(--blue-tint-1),
   'line-focus': var(--pink-shade-5),
   'fancy-1': var(--pink-tint-4),
@@ -63,10 +63,12 @@ html {
   // light mode
   @include config.colors--($light);
   --flag: var(--trans-flag);
+  --alt-flag: var(--gay-flag);
 
   @media (prefers-color-scheme: dark) {
     @include config.colors--($dark);
     --flag: var(--gay-flag);
+    --alt-flag: var(--trans-flag);
   }
 
   @include config.above('wide-page') {

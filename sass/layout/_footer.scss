@@ -1,0 +1,12 @@
+.page-footer {
+  display: grid;
+  grid-template-rows: 1fr auto 1fr;
+  padding: var(--gutter) 0;
+
+  &::before,
+  &::after {
+    background: var(--alt-flag) var(--bg) no-repeat fixed;
+    border-radius: var(--radius);
+    content: '';
+  }
+}
