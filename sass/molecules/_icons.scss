@@ -9,13 +9,14 @@ svg {
 .link-github {
   &:link,
   &:visited {
-    --link: var(--line-focus);
+    --link: var(--bg);
     --link-focus: var(--link);
     --icon-space: 0.4em;
     align-items: center;
     background: var(--fancy);
     border-radius: var(--radius);
     display: inline-flex;
+    font-size: var(--code);
     justify-content: center;
     padding: var(--shim) var(--gutter);
     text-decoration: none;
@@ -25,9 +26,9 @@ svg {
   &:hover,
   &:focus,
   &:active {
-    box-shadow: var(--shadow-bg);
     --fancy-1-focus: var(--fancy-2);
     --fancy-2-focus: var(--fancy-1);
+    box-shadow: var(--shadow-bg);
   }
 
   &:active {

@@ -1,12 +1,35 @@
-.page-footer {
-  display: grid;
-  grid-template-rows: 1fr auto 1fr;
-  padding: var(--gutter) 0;
+@use '../config';
 
-  &::before,
-  &::after {
-    background: var(--alt-flag) var(--bg) no-repeat fixed;
+.page-footer {
+  background: var(--alt-flag) fixed;
+  display: grid;
+  font-size: var(--xsmall);
+  margin: var(--gutter) 0 var(--spacer);
+  place-content: safe center;
+
+  &,
+  .container {
     border-radius: var(--radius);
-    content: '';
   }
+
+  .container {
+    background: var(--flag) fixed;
+    margin: var(--gutter);
+    padding: var(--gutter);
+  }
+
+  &::after {
+    @include config.font-settings('extra');
+    content: var(--mode-label);
+    display: block;
+    font-size: var(--h2);
+    padding: 0 var(--gutter) var(--gutter);
+
+    @supports (background-clip: text) {
+      background: var(--flag) fixed;
+      background-clip: text;
+      color: transparent;
+    }
+  }
+
 }

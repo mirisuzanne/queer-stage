@@ -1,3 +1,13 @@
+section {
+  background: var(--overlay);
+  backdrop-filter: grayscale(50%) blur(2px);
+  padding: var(--gutter);
+
+  & + & {
+    margin-top: var(--spacer);
+  }
+}
+
 %section {
   --dir: 1;
   transform: skew(calc(-2deg * var(--dir)));

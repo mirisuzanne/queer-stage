@@ -3,6 +3,8 @@
 .skip-link {
   &:link,
   &:visited {
+    --link: var(--bg);
+    --link-focus: var(--link);
     background: var(--outer-bg, var(--line-focus));
     display: block;
     box-shadow: var(--outer-shadow, --shadow);

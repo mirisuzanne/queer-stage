@@ -23,10 +23,11 @@ $gay-flag: (
 $light: (
   'bg': var(--gray-tint-5),
   'text': var(--gray-shade-5),
+  'overlay': rgba(config.color('gray-tint-5'), 0.5),
   'action': var(--pink-shade-5),
   'focus': var(--blue-shade-6),
   'line-default': var(--blue-shade-1),
-  'line-focus': var(--pink-tint-5),
+  'line-focus': var(--pink-shade-1),
   'fancy-1': var(--blue-shade-3),
   'fancy-2': var(--pink-shade-3),
 );
@@ -35,11 +36,12 @@ $light: (
 
 $dark: (
   'bg': var(--blue-shade-5),
+  'overlay': rgba(config.color('gray-shade-5'), 0.5),
   'text': var(--gray-tint-5),
   'action': var(--pink-tint-5),
   'focus': var(--blue-tint-6),
   'line-default': var(--blue-tint-1),
-  'line-focus': var(--pink-shade-5),
+  'line-focus': var(--pink-tint-1),
   'fancy-1': var(--pink-tint-4),
   'fancy-2': var(--blue-tint-4),
 );
@@ -64,14 +66,21 @@ html {
   @include config.colors--($light);
   --flag: var(--trans-flag);
   --alt-flag: var(--gay-flag);
+  --mode-label: 'Trans Mode';
 
   @media (prefers-color-scheme: dark) {
     @include config.colors--($dark);
     --flag: var(--gay-flag);
     --alt-flag: var(--trans-flag);
+    --mode-label: 'Gay Mode';
   }
 
   @include config.above('wide-page') {
     --depth: var(--shim);
   }
+}
+
+::selection {
+  background: var(--bg);
+  color: var(--text);
 }

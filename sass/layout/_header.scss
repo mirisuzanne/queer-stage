@@ -3,19 +3,81 @@
 header {
   padding: var(--page-margin);
 
+  @include config.above('wide-page') {
+    --xbase: 2.5rem;
+    --xscale: 3vw;
+    --rotate: -6deg;
+  }
+
+  @include config.above('wide-break') {
+    --xbase: 4rem;
+    --rotate: -12deg;
+  }
+
   .container {
     display: grid;
-    grid-template-rows: 1fr;
+    grid-column-gap: var(--gutter);
+    grid-template:
+      'h1' 1fr
+      'h2' 1fr
+      'se' auto
+      'gh' auto
+      / auto
+    ;
     justify-content: center;
     min-height: 90vh;
+
+    @include config.above('wide-break') {
+      grid-template:
+        'h1 h1' 1fr
+        'h2 h2' 1fr
+        'gh se' auto
+        / auto auto
+      ;
+    }
+  }
+
+  h1,
+  h2 {
+    margin: 0;
+  }
+
+  h2,
+  p {
+    --depth: 1px;
+    text-shadow: var(--shadow-bg);
+  }
+
+  h2 {
+    @include config.font-settings('fun' 'italic');
+    align-self: start;
+    font-size: inherit;
+    grid-area: h2;
+    justify-self: center;
+    text-align: center;
+    transform: rotate(var(--rotate, -3deg));
+  }
+
+  p {
+    align-self: center;
+    grid-area: se;
+    margin: var(--shim) 0;
+  }
+
+  .link-github {
+    align-self: center;
+    grid-area: gh;
   }
 }
 
 h1 {
   @include config.font-settings('extra');
+  align-self: end;
   filter: drop-shadow(var(--shadow-bg));
   font-size: config.size('h1');
-  place-self: center;
+  grid-area: h1;
+  justify-self: center;
+  line-height: 1.2;
   text-align: center;
   text-transform: uppercase;
   transform: rotate(var(--rotate, -3deg));
@@ -30,16 +92,5 @@ h1 {
     color: transparent;
     background-clip: text;
     box-decoration-break: clone;
-  }
-
-  @include config.above('wide-page') {
-    --xbase: 2.5rem;
-    --xscale: 3vw;
-    --rotate: -6deg;
-  }
-
-  @include config.above('wide-break') {
-    --xbase: 4rem;
-    --rotate: -12deg;
   }
 }

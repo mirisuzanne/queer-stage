@@ -4,12 +4,12 @@ body {
   display: grid;
   grid-row-gap: var(--spacer);
   grid-template-areas:
-    'l head r'
-    'l nav r'
-    'l main r'
-    'l now r'
-    'l next r'
-    'l foot r'
+    'l1 head r'
+    'nav nav r'
+    'l2 main r'
+    'l2 now r'
+    'l2 next r'
+    'l2 foot r'
   ;
   grid-template-columns:
     var(--page-margin) auto var(--page-margin)
@@ -22,9 +22,9 @@ body {
       'nav nav  main .    r' 1fr
       'l2  now  main .    r' auto
       'l2  next next next r' auto
-      'l2  foot foot foot r' minmax(auto, 100vh)
+      'l2  foot foot foot r' auto
     / var(--page-margin)
-      3fr
+      minmax(calc(var(--newline) * 17), 3fr)
       fit-content(var(--page))
       1fr
       var(--page-margin)

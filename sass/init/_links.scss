@@ -13,8 +13,7 @@ a {
     color: var(--link-state, var(--link, var(--action)));
     text-decoration-color: var(--line, var(--line-default, currentColor));
     text-decoration-thickness: var(--line-weight, 0.12em);
-    text-decoration-skip-ink: none;
-    text-underline-offset: var(--line-offset, 0.1em);
+    text-underline-offset: var(--line-offset, 0.12em);
     transition:
       font-variation-settings 200ms ease-out,
       text-decoration 200ms ease-out,
@@ -27,7 +26,6 @@ a {
     @include config.font-settings('fun', false);
     --link-state: var(--link-focus, var(--focus));
     --line-default: var(--line-focus);
-    --line-weight: 0.625em;
-    --line-offset: -0.375em;
+    --line-weight: 0.25em;
   }
 }

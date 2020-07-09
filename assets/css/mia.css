@@ -360,43 +360,53 @@ html {
   --gray-tint-6: #eef5f8;
   --bg:var(--gray-tint-5);
   --text:var(--gray-shade-5);
+  --overlay: rgba(217, 223, 226, 0.5);
   --action:var(--pink-shade-5);
   --focus:var(--blue-shade-6);
   --line-default:var(--blue-shade-1);
-  --line-focus:var(--pink-tint-5);
+  --line-focus:var(--pink-shade-1);
   --fancy-1:var(--blue-shade-3);
   --fancy-2:var(--pink-shade-3);
   --trans-flag: linear-gradient(to bottom left, var(--blue-tint-4) 0%, var(--blue-tint-4) 20%, var(--pink-tint-4) 20%, var(--pink-tint-4) 40%, var(--gray-tint-5) 40%, var(--gray-tint-5) 60%, var(--pink-tint-4) 60%, var(--pink-tint-4) 80%, var(--blue-tint-4) 80%, var(--blue-tint-4) 100%);
   --gay-flag: linear-gradient(to bottom left, var(--black) 0%, var(--black) 11.1111111111%, var(--orange-shade-4) 11.1111111111%, var(--orange-shade-4) 22.2222222222%, var(--red-shade-2) 22.2222222222%, var(--red-shade-2) 33.3333333333%, var(--orange) 33.3333333333%, var(--orange) 44.4444444444%, var(--yellow-tint-1) 44.4444444444%, var(--yellow-tint-1) 55.5555555556%, var(--green-shade-1) 55.5555555556%, var(--green-shade-1) 66.6666666667%, var(--blue-shade-1) 66.6666666667%, var(--blue-shade-1) 77.7777777778%, var(--indigo-shade-1) 77.7777777778%, var(--indigo-shade-1) 88.8888888889%, var(--violet-shade-1) 88.8888888889%, var(--violet-shade-1) 100%);
   --bg:var(--gray-tint-5);
   --text:var(--gray-shade-5);
+  --overlay: rgba(217, 223, 226, 0.5);
   --action:var(--pink-shade-5);
   --focus:var(--blue-shade-6);
   --line-default:var(--blue-shade-1);
-  --line-focus:var(--pink-tint-5);
+  --line-focus:var(--pink-shade-1);
   --fancy-1:var(--blue-shade-3);
   --fancy-2:var(--pink-shade-3);
   --flag: var(--trans-flag);
   --alt-flag: var(--gay-flag);
+  --mode-label: "Trans Mode";
 }
 @media (prefers-color-scheme: dark) {
   html {
     --bg:var(--blue-shade-5);
+    --overlay: rgba(27, 31, 33, 0.5);
     --text:var(--gray-tint-5);
     --action:var(--pink-tint-5);
     --focus:var(--blue-tint-6);
     --line-default:var(--blue-tint-1);
-    --line-focus:var(--pink-shade-5);
+    --line-focus:var(--pink-tint-1);
     --fancy-1:var(--pink-tint-4);
     --fancy-2:var(--blue-tint-4);
     --flag: var(--gay-flag);
     --alt-flag: var(--trans-flag);
+    --mode-label: "Gay Mode";
   }
 }
 @media (min-width: 38em) {
   html {
     --depth: var(--shim);
   }
+}
+
+::selection {
+  background: var(--bg);
+  color: var(--text);
 }
 
 html {
@@ -450,6 +460,14 @@ html {
   }
 }
 
+h2 {
+  font-size: var(--h2);
+}
+
+h3 {
+  font-size: var(--h3);
+}
+
 :focus {
   outline: thick dotted currentColor;
   outline: thick dotted var(--outline, currentColor);
@@ -462,28 +480,26 @@ a:link, a:visited {
   color: var(--link-state, var(--link, var(--action)));
   text-decoration-color: var(--line, var(--line-default, currentColor));
   text-decoration-thickness: var(--line-weight, 0.12em);
-  text-decoration-skip-ink: none;
-  text-underline-offset: var(--line-offset, 0.1em);
+  text-underline-offset: var(--line-offset, 0.12em);
   transition: font-variation-settings 200ms ease-out, text-decoration 200ms ease-out, text-underline-offset 200ms ease-out;
 }
 a:hover, a:focus, a:active {
   --casl:1;
   --link-state: var(--link-focus, var(--focus));
   --line-default: var(--line-focus);
-  --line-weight: 0.625em;
-  --line-offset: -0.375em;
+  --line-weight: 0.25em;
 }
 
 body {
   display: grid;
   grid-row-gap: var(--spacer);
-  grid-template-areas: "l head r" "l nav r" "l main r" "l now r" "l next r" "l foot r";
+  grid-template-areas: "l1 head r" "nav nav r" "l2 main r" "l2 now r" "l2 next r" "l2 foot r";
   grid-template-columns: var(--page-margin) auto var(--page-margin);
   justify-content: center;
 }
 @media (min-width: 58em) {
   body {
-    grid-template: "l1  head head head r" auto "nav nav  main .    r" 1fr "l2  now  main .    r" auto "l2  next next next r" auto "l2  foot foot foot r" minmax(auto, 100vh)/var(--page-margin) 3fr fit-content(var(--page)) 1fr var(--page-margin);
+    grid-template: "l1  head head head r" auto "nav nav  main .    r" 1fr "l2  now  main .    r" auto "l2  next next next r" auto "l2  foot foot foot r" auto/var(--page-margin) minmax(calc(var(--newline) * 17), 3fr) fit-content(var(--page)) 1fr var(--page-margin);
   }
 }
 
@@ -514,20 +530,72 @@ main {
 header {
   padding: var(--page-margin);
 }
+@media (min-width: 38em) {
+  header {
+    --xbase: 2.5rem;
+    --xscale: 3vw;
+    --rotate: -6deg;
+  }
+}
+@media (min-width: 58em) {
+  header {
+    --xbase: 4rem;
+    --rotate: -12deg;
+  }
+}
 header .container {
   display: grid;
-  grid-template-rows: 1fr;
+  grid-column-gap: var(--gutter);
+  grid-template: "h1" 1fr "h2" 1fr "se" auto "gh" auto/auto;
   justify-content: center;
   min-height: 90vh;
+}
+@media (min-width: 58em) {
+  header .container {
+    grid-template: "h1 h1" 1fr "h2 h2" 1fr "gh se" auto/auto auto;
+  }
+}
+header h1,
+header h2 {
+  margin: 0;
+}
+header h2,
+header p {
+  --depth: 1px;
+  text-shadow: var(--shadow-bg);
+}
+header h2 {
+  font-variation-settings: "MONO" var(--mono), "CASL" var(--casl), "wght" var(--wght), "slnt" var(--slnt), "ital" var(--ital);
+  --casl:1;
+  font-style: italic;
+  --slnt:-15;
+  align-self: start;
+  font-size: inherit;
+  grid-area: h2;
+  justify-self: center;
+  text-align: center;
+  transform: rotate(var(--rotate, -3deg));
+}
+header p {
+  align-self: center;
+  grid-area: se;
+  margin: var(--shim) 0;
+}
+header .link-github {
+  align-self: center;
+  grid-area: gh;
 }
 
 h1 {
   font-variation-settings: "MONO" var(--mono), "CASL" var(--casl), "wght" var(--wght), "slnt" var(--slnt), "ital" var(--ital);
   font-weight: bold;
   --wght:1000;
+  align-self: end;
   filter: drop-shadow(var(--shadow-bg));
   font-size: calc(var(--xbase, 2rem) + var(--xscale, 2vmin));
-  place-self: center;
+  grid-area: h1;
+  justify-self: center;
+  line-height: 1.2;
   text-align: center;
   text-transform: uppercase;
   transform: rotate(var(--rotate, -3deg));
@@ -545,37 +613,154 @@ h1:hover {
     box-decoration-break: clone;
   }
 }
-@media (min-width: 38em) {
-  h1 {
-    --xbase: 2.5rem;
-    --xscale: 3vw;
-    --rotate: -6deg;
-  }
-}
-@media (min-width: 58em) {
-  h1 {
-    --xbase: 4rem;
-    --rotate: -12deg;
-  }
-}
 
 nav {
-  padding-right: var(--spacer);
+  --line: transparent;
+  font-size: var(--small);
+  position: relative;
+}
+@media (min-width: 58em) {
+  nav {
+    display: grid;
+    justify-content: center;
+  }
+  nav::after {
+    background: var(--bg);
+    bottom: calc(var(--half-shim) * -1);
+    content: "";
+    height: var(--shim);
+    left: 0;
+    position: absolute;
+    right: 0;
+    z-index: 2;
+  }
 }
 nav ul {
-  position: sticky;
-  top: var(--gutter);
+  display: grid;
+  grid-gap: var(--shim);
+  margin: 0;
+  padding: 0;
+}
+@media (min-width: 58em) {
+  nav ul {
+    max-height: 80vh;
+    position: sticky;
+    top: 20vh;
+    writing-mode: sideways-lr;
+  }
+}
+nav li {
+  display: flex;
+}
+nav li:nth-child(1) {
+  --nav-flex: 0.6724887986;
+}
+nav li:nth-child(2) {
+  --nav-flex: 0.3330946179;
+}
+nav li:nth-child(3) {
+  --nav-flex: 0.381200429;
+}
+nav li:nth-child(4) {
+  --nav-flex: 0.5912430945;
+}
+nav li:nth-child(5) {
+  --nav-flex: 0.3913959528;
+}
+nav li:nth-child(6) {
+  --nav-flex: 0.7085783192;
+}
+nav a:link, nav a:visited {
+  --depth: 1px;
+  --static-a: var(--shim);
+  --static-b: var(--half-shim);
+  --path: polygon(
+    0 0,
+    calc(100% - var(--clip-a, var(--gutter-plus))) var(--static-a),
+    calc(100% - var(--clip-b, var(--gutter))) calc(100% - var(--static-b)),
+    0 100%
+  );
+  background: var(--nav-bg, var(--bg));
+  filter: drop-shadow(var(--shadow-fg));
+  flex: var(--nav-flex, 0.2) 0 auto;
+  padding: var(--shim);
+  padding-inline: var(--double-gutter);
+  position: relative;
+  text-align: right;
+}
+@media (min-width: 58em) {
+  nav a:link, nav a:visited {
+    --path: polygon(
+      var(--static-a) var(--clip-a, var(--gutter-plus)),
+       calc(100% - var(--static-b)) var(--clip-b, var(--gutter)),
+       100% 100%,
+       0 100%
+    );
+  }
+}
+@supports (clip-path: inset(0)) {
+  nav a:link, nav a:visited {
+    background: transparent;
+  }
+  nav a:link::before, nav a:visited::before {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: var(--nav-bg, var(--bg));
+    content: "";
+    clip-path: var(--path);
+    z-index: -1;
+  }
+}
+nav a:hover, nav a:focus, nav a:active {
+  --depth: var(--half-shim);
+  --nav-bg: var(--line-focus);
+  color: var(--bg);
+  z-index: 1;
+}
+
+section {
+  background: var(--overlay);
+  backdrop-filter: grayscale(50%) blur(2px);
+  padding: var(--gutter);
+}
+section + section {
+  margin-top: var(--spacer);
 }
 
 .page-footer {
+  background: var(--alt-flag) fixed;
   display: grid;
-  grid-template-rows: 1fr auto 1fr;
-  padding: var(--gutter) 0;
+  font-size: var(--xsmall);
+  margin: var(--gutter) 0 var(--spacer);
+  place-content: safe center;
 }
-.page-footer::before, .page-footer::after {
-  background: var(--alt-flag) var(--bg) no-repeat fixed;
+.page-footer,
+.page-footer .container {
   border-radius: var(--radius);
-  content: "";
+}
+.page-footer .container {
+  background: var(--flag) fixed;
+  margin: var(--gutter);
+  padding: var(--gutter);
+}
+.page-footer::after {
+  font-variation-settings: "MONO" var(--mono), "CASL" var(--casl), "wght" var(--wght), "slnt" var(--slnt), "ital" var(--ital);
+  font-weight: bold;
+  --wght:1000;
+  content: var(--mode-label);
+  display: block;
+  font-size: var(--h2);
+  padding: 0 var(--gutter) var(--gutter);
+}
+@supports (background-clip: text) {
+  .page-footer::after {
+    background: var(--flag) fixed;
+    background-clip: text;
+    color: transparent;
+  }
 }
 
 svg {
@@ -587,22 +772,23 @@ svg {
 }
 
 .link-github:link, .link-github:visited {
-  --link: var(--line-focus);
+  --link: var(--bg);
   --link-focus: var(--link);
   --icon-space: 0.4em;
   align-items: center;
   background: var(--fancy);
   border-radius: var(--radius);
   display: inline-flex;
+  font-size: var(--code);
   justify-content: center;
   padding: var(--shim) var(--gutter);
   text-decoration: none;
   transition: box-shadow 150ms ease-out;
 }
 .link-github:hover, .link-github:focus, .link-github:active {
-  box-shadow: var(--shadow-bg);
   --fancy-1-focus: var(--fancy-2);
   --fancy-2-focus: var(--fancy-1);
+  box-shadow: var(--shadow-bg);
 }
 .link-github:active {
   box-shadow: 0 0 var(--half-shim) var(--black) inset;
@@ -612,6 +798,8 @@ svg {
 }
 
 .skip-link:link, .skip-link:visited {
+  --link: var(--bg);
+  --link-focus: var(--link);
   background: var(--outer-bg, var(--line-focus));
   display: block;
   box-shadow: var(--outer-shadow, --shadow);
