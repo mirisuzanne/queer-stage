@@ -43,3 +43,11 @@ h3 {
 h4 {
   @include config.font-settings('bold' 'fun');
 }
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    background-attachment: initial !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0s !important;
+  }
+}
