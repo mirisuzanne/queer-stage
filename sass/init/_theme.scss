@@ -1,3 +1,5 @@
+@use 'sass:list';
+@use 'sass:map';
 @use '../config';
 
 $trans-flag: (
@@ -23,7 +25,6 @@ $gay-flag: (
 $light: (
   'bg': var(--gray-tint-5),
   'text': var(--gray-shade-5),
-  'overlay': rgba(config.color('gray-tint-5'), 0.5),
   'action': var(--pink-shade-5),
   'focus': var(--blue-shade-6),
   'line-default': var(--blue-shade-1),
@@ -36,7 +37,6 @@ $light: (
 
 $dark: (
   'bg': var(--blue-shade-5),
-  'overlay': rgba(config.color('gray-shade-5'), 0.5),
   'text': var(--gray-tint-5),
   'action': var(--pink-tint-5),
   'focus': var(--blue-tint-6),
@@ -45,6 +45,14 @@ $dark: (
   'fancy-1': var(--pink-tint-4),
   'fancy-2': var(--blue-tint-4),
 );
+
+$backgrounds: ('red', 'orange', 'green', 'blue', 'violet');
+
+@each $color in $backgrounds {
+  $name: 'bg-#{list.index($backgrounds, $color)}';
+  $light: map.merge($light, ($name: var(--#{$color}-tint-5)));
+  $dark: map.merge($dark, ($name: var(--#{$color}-shade-5)));
+}
 
 * {
   --depths: var(--depth, var(--half-shim)) var(--depth, var(--half-shim));

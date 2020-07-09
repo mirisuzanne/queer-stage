@@ -25,10 +25,9 @@
   }
 
   @supports (clip-path: inset(0)) {
-    --outline: none;
     --outer-shadow: none;
     --outer-bg: transparent;
-    filter: drop-shadow(var(--shadow-fg));
+    filter: drop-shadow(var(--shadow-bg));
 
     &::before {
       @include config.position(0);

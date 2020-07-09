@@ -1,0 +1,41 @@
+@use '../config';
+
+[id='styles'] {
+  display: grid;
+  min-height: 100vh;
+  align-content: safe center;
+
+  .container {
+    text-align: center;
+  }
+
+  ul {
+    display: grid;
+    grid-gap: var(--gutter);
+    grid-template-columns: repeat(auto-fit, minmax(15ch, 25ch));
+    justify-content: safe center;
+  }
+
+  li {
+    list-style: none;
+    background: var(--bg);
+    box-shadow: var(--shadow-fg);
+    padding: var(--gutter);
+    text-align: left;
+
+    a {
+      display: block;
+      margin-bottom: var(--newline);
+    }
+
+  }
+
+  a + span {
+    @include config.font-settings('italic' 'fun');
+    font-size: var(--small);
+  }
+}
+
+.link-allstyles {
+  margin: var(--spacer) auto;
+}

@@ -6,10 +6,10 @@ body {
   grid-template-areas:
     'l1 head r'
     'nav nav r'
-    'l2 main r'
-    'l2 now r'
-    'l2 next r'
-    'l2 foot r'
+    'l2 main main'
+    'l2 now r2'
+    'l2 next r2'
+    'l2 foot r2'
   ;
   grid-template-columns:
     var(--page-margin) auto var(--page-margin)
@@ -19,13 +19,13 @@ body {
   @include config.above('wide-break') {
     grid-template:
       'l1  head head head r' auto
-      'nav nav  main .    r' 1fr
-      'l2  now  main .    r' auto
-      'l2  next next next r' auto
-      'l2  foot foot foot r' auto
+      'nav nav  main main main' 1fr
+      'l2  now  main main main' auto
+      'l2  next next next r2' auto
+      'l2  foot foot foot r2' auto
     / var(--page-margin)
-      minmax(calc(var(--newline) * 17), 3fr)
-      fit-content(var(--page))
+      minmax(calc(var(--newline) * 17), 10fr)
+      minmax(min-content, var(--page))
       1fr
       var(--page-margin)
     ;

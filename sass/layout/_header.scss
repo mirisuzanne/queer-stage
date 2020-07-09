@@ -3,17 +3,6 @@
 header {
   padding: var(--page-margin);
 
-  @include config.above('wide-page') {
-    --xbase: 2.5rem;
-    --xscale: 3vw;
-    --rotate: -6deg;
-  }
-
-  @include config.above('wide-break') {
-    --xbase: 4rem;
-    --rotate: -12deg;
-  }
-
   .container {
     display: grid;
     grid-column-gap: var(--gutter);
@@ -70,6 +59,7 @@ header {
   }
 }
 
+[id='styles'] h2,
 h1 {
   @include config.font-settings('extra');
   align-self: end;

@@ -32,4 +32,13 @@
     }
   }
 
+  ul {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  li {
+    list-style: none;
+    margin: var(--shim) var(--gutter);
+  }
 }

@@ -9,17 +9,37 @@ html {
   font-size: config.size('rem');
   font-synthesis: none;
   line-height: config.ratio('line-height');
+  overflow-x: hidden;
+  scroll-snap-type: block;
+  scroll-padding: var(--gutter);
 
   @supports (font-variation-settings: normal) {
     @include config.font-family('recursive');
     @include config.font-settings('body');
   }
+
+  @include config.above('wide-page') {
+    --xbase: 2.5rem;
+    --xscale: 3vw;
+    --rotate: -6deg;
+  }
+
+  @include config.above('wide-break') {
+    --xbase: 4rem;
+    --rotate: -12deg;
+  }
 }
 
 h2 {
+  @include config.font-settings('bold' 'fun');
   font-size: var(--h2);
 }
 
 h3 {
+  @include config.font-settings('light' 'fun');
   font-size: var(--h3);
+}
+
+h4 {
+  @include config.font-settings('bold' 'fun');
 }

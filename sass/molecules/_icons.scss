@@ -6,15 +6,21 @@ svg {
   width: 1em;
 }
 
+[id='files'] a,
+[href='/styles/css/main-stage.css'],
+.page-footer li a,
+.link-allstyles,
 .link-github {
   &:link,
   &:visited {
     --link: var(--bg);
     --link-focus: var(--link);
     --icon-space: 0.4em;
+    --depth: var(--quarter-shim);
     align-items: center;
     background: var(--fancy);
     border-radius: var(--radius);
+    box-shadow: var(--shadow-bg);
     display: inline-flex;
     font-size: var(--code);
     justify-content: center;
@@ -28,11 +34,11 @@ svg {
   &:active {
     --fancy-1-focus: var(--fancy-2);
     --fancy-2-focus: var(--fancy-1);
-    box-shadow: var(--shadow-bg);
+    --depth: inherit;
   }
 
   &:active {
-    box-shadow: 0 0 var(--half-shim) var(--black) inset;
+    --depth: 0;
   }
 
   span {

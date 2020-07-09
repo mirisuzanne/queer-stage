@@ -4,36 +4,14 @@
 nav {
   --line: transparent;
   font-size: var(--small);
-  position: relative;
-
-  @include config.above('wide-break') {
-    display: grid;
-    justify-content: center;
-
-    &::after {
-      background: var(--bg);
-      bottom: calc(var(--half-shim) * -1);
-      content: '';
-      height: var(--shim);
-      left: 0;
-      position: absolute;
-      right: 0;
-      z-index: 2;
-    }
-  }
 
   ul {
     display: grid;
     grid-gap: var(--shim);
     margin: 0;
     padding: 0;
-
-    @include config.above('wide-break') {
-      max-height: 80vh;
-      position: sticky;
-      top: 20vh;
-      writing-mode: sideways-lr;
-    }
+    position: sticky;
+    top: var(--gutter);
   }
 
   li {
@@ -41,7 +19,10 @@ nav {
 
     @for $i from 1 through 6 {
       &:nth-child(#{$i}) {
+        --nav-bg: var(--fancy-#{math.random(2) + 1});
         --nav-flex: #{math.random()};
+        --rand-a: #{math.random(12)};
+        --rand-b: #{math.random(12)};
       }
     }
   }
@@ -49,40 +30,35 @@ nav {
   a {
     &:link,
     &:visited {
-      --depth: 1px;
+      --depth: var(--quarter-shim);
       --static-a: var(--shim);
       --static-b: var(--half-shim);
+      --clip-a: calc(var(--rand-a) * var(--quarter-shim));
+      --clip-b: calc(var(--rand-b) * var(--quarter-shim));
       --path: polygon(
         0 0,
-        calc(100% - var(--clip-a, var(--gutter-plus))) var(--static-a),
-        calc(100% - var(--clip-b, var(--gutter))) calc(100% - var(--static-b)),
+        calc(100% - var(--clip-a)) var(--static-a),
+        calc(100% - var(--clip-b)) calc(100% - var(--static-b)),
         0 100%
       );
-      background: var(--nav-bg, var(--bg));
-      filter: drop-shadow(var(--shadow-fg));
+      background: var(--nav-bg, var(--fancy-1));
+      color: var(--bg);
+      filter: drop-shadow(var(--shadow-bg));
       flex: var(--nav-flex, 0.2) 0 auto;
-      padding: var(--shim);
-      padding-inline: var(--double-gutter);
+      padding: var(--shim) var(--double-gutter);
       position: relative;
       text-align: right;
-
-      @include config.above('wide-break') {
-        --path: polygon(
-          var(--static-a) var(--clip-a, var(--gutter-plus)),
-           calc(100% - var(--static-b)) var(--clip-b, var(--gutter)),
-           100% 100%,
-           0 100%
-        );
-      }
+      transition: filter 300ms ease-in-out;
 
       @supports (clip-path: inset(0)) {
         background: transparent;
 
         &::before {
           @include config.position(0);
-          background: var(--nav-bg, var(--bg));
+          background: var(--nav-bg, var(--fancy-1));
           content: '';
           clip-path: var(--path);
+          transition: clip-path 300ms ease-in-out;
           z-index: -1;
         }
       }
@@ -91,9 +67,12 @@ nav {
     &:hover,
     &:focus,
     &:active {
-      --depth: var(--half-shim);
-      --nav-bg: var(--line-focus);
-      color: var(--bg);
+      --static-a: var(--half-shim);
+      --static-b: var(--quarter-shim);
+      --rand-a: #{math.random(5)};
+      --rand-b: #{math.random(5)};
+      --depth: inherit;
+      --nav-bg: var(--fancy);
       z-index: 1;
     }
   }

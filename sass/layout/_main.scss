@@ -1,23 +1,118 @@
-section {
-  background: var(--overlay);
-  backdrop-filter: grayscale(50%) blur(2px);
-  padding: var(--gutter);
+@use 'sass:math';
+@use '../config';
 
-  & + & {
-    margin-top: var(--spacer);
+main {
+  article,
+  .container {
+    display: grid;
+    grid-gap: var(--gap,  var(--spacer));
+  }
+
+  section {
+    --gap: var(--newline);
+    filter: drop-shadow(var(--shadow-bg));
+    grid-template-columns:
+      [main-start  wide-start full-start]
+      minmax(min-content, var(--page)) [main-end]
+      1fr [wide-end]
+      var(--page-margin) [full-end]
+    ;
+
+    > * {
+      background: var(--block-bg, var(--bg));
+      clip-path: polygon(
+        calc(var(--c1x) * var(--quarter-shim)) calc(var(--c1y) * var(--quarter-shim)),
+        calc(100% - var(--c2x) * var(--quarter-shim)) calc(var(--c2y) * var(--quarter-shim)),
+        calc(100% - var(--c3x) * var(--quarter-shim)) calc(100% - var(--c3y) * var(--quarter-shim)),
+        calc(var(--c4x) * var(--quarter-shim)) calc(100% - var(--c4y) * var(--quarter-shim))
+      );
+      grid-column: var(--column, main);
+      margin: 0;
+      padding: var(--gutter);
+      transform: rotate(var(--rotate));
+
+      @for $i from 1 through 10 {
+        &:nth-child(#{$i}n) {
+          --rotate: #{math.random(8) - 4deg};
+          --block-bg: var(--bg-#{($i % 5) + 1});
+          --c1x: #{math.random(7)};
+          --c1y: #{math.random(7)};
+          --c2x: #{math.random(7)};
+          --c2y: #{math.random(7)};
+          --c3x: #{math.random(7)};
+          --c3y: #{math.random(7)};
+          --c4x: #{math.random(7)};
+          --c4y: #{math.random(7)};
+        }
+      }
+    }
+  }
+
+  h2 {
+    --column: full;
+  }
+
+  h3 {
+    --column: wide;
   }
 }
 
-%section {
-  --dir: 1;
-  transform: skew(calc(-2deg * var(--dir)));
-  padding: 0 var(--gutter);
-
-  &:nth-of-type(even) {
-    --dir: -1;
+[id='about'] {
+  ul {
+    display: flex;
+    flex-wrap: wrap;
   }
 
-  > * {
-    transform: skew(calc(2deg * var(--dir)));
+  li {
+    @include config.font-settings('code');
+    list-style: none;
+    margin: var(--half-shim) var(--shim);
+  }
+}
+
+[id='contribute'] {
+  ol {
+    padding-left: var(--spacer);
+  }
+
+  li {
+    margin-bottom: var(--newline);
+  }
+}
+
+[id='files'],
+.profile {
+  background: var(--bg-1);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-bg);
+  padding: var(--gutter);
+}
+
+[id='files'] {
+  align-self: start;
+  margin-right: var(--page-margin);
+
+  .container {
+    --gap: 0;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  h3 {
+    flex-basis: 100%;
+    margin-top: 0;
+  }
+
+  a {
+    flex: auto;
+    margin: var(--shim);
+  }
+}
+
+.profile {
+  margin-right: var(--gutter);
+
+  h4 {
+    margin: 0;
   }
 }
