@@ -27,6 +27,7 @@ svg {
     padding: var(--shim) var(--gutter);
     text-decoration: none;
     transition: box-shadow 150ms ease-out;
+    white-space: nowrap;
   }
 
   &:hover,

@@ -659,39 +659,39 @@ nav li {
 }
 nav li:nth-child(1) {
   --nav-bg: var(--fancy-2);
-  --nav-flex: 0.3705759407;
-  --rand-a: 3;
-  --rand-b: 12;
+  --nav-flex: 0.9072876589;
+  --rand-a: 7;
+  --rand-b: 5;
 }
 nav li:nth-child(2) {
   --nav-bg: var(--fancy-3);
-  --nav-flex: 0.478692351;
+  --nav-flex: 0.2413261218;
   --rand-a: 11;
-  --rand-b: 7;
+  --rand-b: 12;
 }
 nav li:nth-child(3) {
-  --nav-bg: var(--fancy-2);
-  --nav-flex: 0.5427760254;
-  --rand-a: 5;
-  --rand-b: 6;
+  --nav-bg: var(--fancy-3);
+  --nav-flex: 0.4540223349;
+  --rand-a: 1;
+  --rand-b: 4;
 }
 nav li:nth-child(4) {
   --nav-bg: var(--fancy-3);
-  --nav-flex: 0.1457731503;
+  --nav-flex: 0.4883059745;
   --rand-a: 2;
-  --rand-b: 10;
+  --rand-b: 9;
 }
 nav li:nth-child(5) {
   --nav-bg: var(--fancy-2);
-  --nav-flex: 0.9672017013;
-  --rand-a: 7;
-  --rand-b: 7;
+  --nav-flex: 0.9417578817;
+  --rand-a: 9;
+  --rand-b: 5;
 }
 nav li:nth-child(6) {
-  --nav-bg: var(--fancy-3);
-  --nav-flex: 0.9647154051;
-  --rand-a: 5;
-  --rand-b: 12;
+  --nav-bg: var(--fancy-2);
+  --nav-flex: 0.2495322425;
+  --rand-a: 1;
+  --rand-b: 2;
 }
 nav a:link, nav a:visited {
   --depth: var(--quarter-shim);
@@ -760,124 +760,124 @@ main section > * {
   transform: rotate(var(--rotate));
 }
 main section > *:nth-child(1n) {
-  --rotate: 0deg;
+  --rotate: 3deg;
   --block-bg: var(--bg-2);
-  --c1x: 1;
-  --c1y: 2;
-  --c2x: 7;
-  --c2y: 4;
-  --c3x: 7;
-  --c3y: 1;
-  --c4x: 6;
-  --c4y: 6;
+  --c1x: 3;
+  --c1y: 5;
+  --c2x: 6;
+  --c2y: 7;
+  --c3x: 3;
+  --c3y: 3;
+  --c4x: 4;
+  --c4y: 3;
 }
 main section > *:nth-child(2n) {
-  --rotate: 3deg;
-  --block-bg: var(--bg-3);
-  --c1x: 6;
-  --c1y: 7;
-  --c2x: 7;
-  --c2y: 6;
-  --c3x: 6;
-  --c3y: 5;
-  --c4x: 7;
-  --c4y: 6;
-}
-main section > *:nth-child(3n) {
-  --rotate: 2deg;
-  --block-bg: var(--bg-4);
-  --c1x: 7;
-  --c1y: 3;
-  --c2x: 2;
-  --c2y: 1;
-  --c3x: 1;
-  --c3y: 7;
-  --c4x: 6;
-  --c4y: 3;
-}
-main section > *:nth-child(4n) {
-  --rotate: 3deg;
-  --block-bg: var(--bg-5);
-  --c1x: 1;
-  --c1y: 1;
-  --c2x: 2;
-  --c2y: 6;
-  --c3x: 2;
-  --c3y: 5;
-  --c4x: 2;
-  --c4y: 3;
-}
-main section > *:nth-child(5n) {
-  --rotate: -1deg;
-  --block-bg: var(--bg-1);
-  --c1x: 6;
-  --c1y: 3;
-  --c2x: 2;
-  --c2y: 1;
-  --c3x: 1;
-  --c3y: 4;
-  --c4x: 4;
-  --c4y: 3;
-}
-main section > *:nth-child(6n) {
-  --rotate: -1deg;
-  --block-bg: var(--bg-2);
-  --c1x: 6;
-  --c1y: 3;
-  --c2x: 4;
-  --c2y: 7;
-  --c3x: 4;
-  --c3y: 2;
-  --c4x: 4;
-  --c4y: 4;
-}
-main section > *:nth-child(7n) {
   --rotate: 0deg;
   --block-bg: var(--bg-3);
-  --c1x: 7;
-  --c1y: 6;
-  --c2x: 5;
-  --c2y: 1;
-  --c3x: 2;
+  --c1x: 5;
+  --c1y: 1;
+  --c2x: 7;
+  --c2y: 7;
+  --c3x: 4;
   --c3y: 7;
+  --c4x: 6;
+  --c4y: 1;
+}
+main section > *:nth-child(3n) {
+  --rotate: 3deg;
+  --block-bg: var(--bg-4);
+  --c1x: 6;
+  --c1y: 6;
+  --c2x: 2;
+  --c2y: 3;
+  --c3x: 5;
+  --c3y: 3;
   --c4x: 2;
-  --c4y: 2;
+  --c4y: 4;
+}
+main section > *:nth-child(4n) {
+  --rotate: -2deg;
+  --block-bg: var(--bg-5);
+  --c1x: 5;
+  --c1y: 4;
+  --c2x: 2;
+  --c2y: 1;
+  --c3x: 7;
+  --c3y: 3;
+  --c4x: 3;
+  --c4y: 1;
+}
+main section > *:nth-child(5n) {
+  --rotate: -2deg;
+  --block-bg: var(--bg-1);
+  --c1x: 4;
+  --c1y: 5;
+  --c2x: 1;
+  --c2y: 2;
+  --c3x: 4;
+  --c3y: 6;
+  --c4x: 4;
+  --c4y: 7;
+}
+main section > *:nth-child(6n) {
+  --rotate: -3deg;
+  --block-bg: var(--bg-2);
+  --c1x: 5;
+  --c1y: 3;
+  --c2x: 4;
+  --c2y: 2;
+  --c3x: 7;
+  --c3y: 2;
+  --c4x: 7;
+  --c4y: 3;
+}
+main section > *:nth-child(7n) {
+  --rotate: 4deg;
+  --block-bg: var(--bg-3);
+  --c1x: 5;
+  --c1y: 3;
+  --c2x: 7;
+  --c2y: 4;
+  --c3x: 4;
+  --c3y: 3;
+  --c4x: 7;
+  --c4y: 1;
 }
 main section > *:nth-child(8n) {
-  --rotate: 1deg;
+  --rotate: 2deg;
   --block-bg: var(--bg-4);
-  --c1x: 7;
-  --c1y: 7;
-  --c2x: 2;
-  --c2y: 2;
-  --c3x: 2;
-  --c3y: 5;
-  --c4x: 3;
-  --c4y: 7;
+  --c1x: 3;
+  --c1y: 4;
+  --c2x: 4;
+  --c2y: 6;
+  --c3x: 5;
+  --c3y: 1;
+  --c4x: 2;
+  --c4y: 6;
 }
 main section > *:nth-child(9n) {
   --rotate: -2deg;
   --block-bg: var(--bg-5);
-  --c1x: 2;
-  --c1y: 4;
-  --c2x: 7;
-  --c2y: 1;
-  --c3x: 7;
-  --c3y: 3;
-  --c4x: 1;
-  --c4y: 3;
+  --c1x: 4;
+  --c1y: 7;
+  --c2x: 3;
+  --c2y: 6;
+  --c3x: 5;
+  --c3y: 6;
+  --c4x: 7;
+  --c4y: 2;
 }
 main section > *:nth-child(10n) {
-  --rotate: 2deg;
+  --rotate: -3deg;
   --block-bg: var(--bg-1);
-  --c1x: 3;
-  --c1y: 3;
-  --c2x: 5;
-  --c2y: 1;
-  --c3x: 5;
-  --c3y: 1;
+  --c1x: 4;
+  --c1y: 4;
+  --c2x: 3;
+  --c2y: 2;
+  --c3x: 6;
+  --c3y: 4;
   --c4x: 2;
-  --c4y: 1;
+  --c4y: 2;
 }
 main h2 {
   --column: full;
@@ -893,6 +893,7 @@ main h3 {
 [id=about] li {
   font-variation-settings: "MONO" var(--mono), "CASL" var(--casl), "wght" var(--wght), "slnt" var(--slnt), "ital" var(--ital);
   --mono:1;
+  font-size: var(--code);
   list-style: none;
   margin: var(--half-shim) var(--shim);
 }
@@ -1007,8 +1008,11 @@ main h3 {
   }
 }
 .page-footer ul {
+  align-items: center;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
+  padding: 0;
 }
 .page-footer li {
   list-style: none;
@@ -1046,6 +1050,7 @@ svg {
   padding: var(--shim) var(--gutter);
   text-decoration: none;
   transition: box-shadow 150ms ease-out;
+  white-space: nowrap;
 }
 [id=files] a:hover, [id=files] a:focus, [id=files] a:active,
 [href="/styles/css/main-stage.css"]:hover,
