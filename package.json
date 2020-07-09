@@ -9,7 +9,7 @@
   "private": true,
   "scripts": {
     "docs": "sassdoc sass/",
-    "sass": "sass sass/:css/",
+    "sass": "sass sass/:assets/css/",
     "build": "yarn sass; yarn docs",
     "watch": "sass --watch sass/:assets/css/"
   },
