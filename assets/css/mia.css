@@ -696,39 +696,39 @@ nav li {
 }
 nav li:nth-child(1) {
   --nav-bg: var(--fancy-3);
-  --nav-flex: 0.1542263749;
-  --rand-a: 7;
-  --rand-b: 2;
+  --nav-flex: 0.5999962402;
+  --rand-a: 11;
+  --rand-b: 1;
 }
 nav li:nth-child(2) {
-  --nav-bg: var(--fancy-2);
-  --nav-flex: 0.0314041554;
-  --rand-a: 4;
-  --rand-b: 3;
-}
-nav li:nth-child(3) {
   --nav-bg: var(--fancy-3);
-  --nav-flex: 0.18502384;
-  --rand-a: 9;
+  --nav-flex: 0.5879718197;
+  --rand-a: 5;
   --rand-b: 7;
 }
-nav li:nth-child(4) {
+nav li:nth-child(3) {
   --nav-bg: var(--fancy-2);
-  --nav-flex: 0.3446723453;
-  --rand-a: 7;
-  --rand-b: 12;
+  --nav-flex: 0.4575132007;
+  --rand-a: 11;
+  --rand-b: 5;
+}
+nav li:nth-child(4) {
+  --nav-bg: var(--fancy-3);
+  --nav-flex: 0.2122580827;
+  --rand-a: 1;
+  --rand-b: 10;
 }
 nav li:nth-child(5) {
   --nav-bg: var(--fancy-3);
-  --nav-flex: 0.6110587817;
-  --rand-a: 11;
-  --rand-b: 10;
+  --nav-flex: 0.4014205606;
+  --rand-a: 12;
+  --rand-b: 5;
 }
 nav li:nth-child(6) {
   --nav-bg: var(--fancy-2);
-  --nav-flex: 0.3648892499;
-  --rand-a: 5;
-  --rand-b: 1;
+  --nav-flex: 0.4217824065;
+  --rand-a: 2;
+  --rand-b: 3;
 }
 nav a:link, nav a:visited {
   --depth: var(--quarter-shim);
@@ -771,8 +771,8 @@ nav a:link, nav a:visited {
 nav a:hover, nav a:focus, nav a:active {
   --static-a: var(--half-shim);
   --static-b: var(--quarter-shim);
-  --rand-a: 4;
-  --rand-b: 2;
+  --rand-a: 5;
+  --rand-b: 3;
   --depth: inherit;
   --nav-bg: var(--fancy);
   z-index: 1;
@@ -796,124 +796,124 @@ main section > * {
   transform: rotate(var(--rotate));
 }
 main section > *:nth-child(1n) {
-  --rotate: 0deg;
+  --rotate: 4deg;
   --block-bg: var(--bg-2);
   --c1x: 5;
   --c1y: 1;
-  --c2x: 3;
-  --c2y: 3;
-  --c3x: 6;
-  --c3y: 7;
-  --c4x: 7;
-  --c4y: 5;
+  --c2x: 6;
+  --c2y: 4;
+  --c3x: 3;
+  --c3y: 6;
+  --c4x: 4;
+  --c4y: 4;
 }
 main section > *:nth-child(2n) {
-  --rotate: 0deg;
+  --rotate: 4deg;
   --block-bg: var(--bg-3);
-  --c1x: 4;
-  --c1y: 1;
-  --c2x: 7;
-  --c2y: 1;
-  --c3x: 6;
-  --c3y: 5;
-  --c4x: 2;
-  --c4y: 3;
+  --c1x: 3;
+  --c1y: 2;
+  --c2x: 6;
+  --c2y: 4;
+  --c3x: 5;
+  --c3y: 3;
+  --c4x: 3;
+  --c4y: 5;
 }
 main section > *:nth-child(3n) {
-  --rotate: 2deg;
+  --rotate: -1deg;
   --block-bg: var(--bg-4);
-  --c1x: 4;
-  --c1y: 6;
-  --c2x: 3;
-  --c2y: 7;
-  --c3x: 4;
-  --c3y: 7;
+  --c1x: 1;
+  --c1y: 4;
+  --c2x: 2;
+  --c2y: 2;
+  --c3x: 2;
+  --c3y: 2;
   --c4x: 1;
-  --c4y: 2;
+  --c4y: 6;
 }
 main section > *:nth-child(4n) {
-  --rotate: 2deg;
+  --rotate: -3deg;
   --block-bg: var(--bg-5);
   --c1x: 6;
   --c1y: 6;
-  --c2x: 4;
+  --c2x: 2;
   --c2y: 5;
   --c3x: 6;
-  --c3y: 4;
-  --c4x: 7;
-  --c4y: 4;
+  --c3y: 2;
+  --c4x: 5;
+  --c4y: 1;
 }
 main section > *:nth-child(5n) {
-  --rotate: -1deg;
+  --rotate: 4deg;
   --block-bg: var(--bg-1);
-  --c1x: 1;
-  --c1y: 2;
-  --c2x: 7;
-  --c2y: 4;
-  --c3x: 6;
-  --c3y: 1;
-  --c4x: 4;
-  --c4y: 6;
+  --c1x: 6;
+  --c1y: 1;
+  --c2x: 2;
+  --c2y: 7;
+  --c3x: 3;
+  --c3y: 7;
+  --c4x: 7;
+  --c4y: 1;
 }
 main section > *:nth-child(6n) {
   --rotate: -3deg;
   --block-bg: var(--bg-2);
   --c1x: 1;
-  --c1y: 7;
-  --c2x: 2;
-  --c2y: 5;
-  --c3x: 5;
-  --c3y: 5;
+  --c1y: 5;
+  --c2x: 7;
+  --c2y: 6;
+  --c3x: 3;
+  --c3y: 1;
   --c4x: 4;
-  --c4y: 7;
+  --c4y: 4;
 }
 main section > *:nth-child(7n) {
-  --rotate: 3deg;
+  --rotate: 0deg;
   --block-bg: var(--bg-3);
-  --c1x: 1;
-  --c1y: 7;
-  --c2x: 5;
-  --c2y: 2;
-  --c3x: 6;
+  --c1x: 3;
+  --c1y: 4;
+  --c2x: 4;
+  --c2y: 5;
+  --c3x: 2;
   --c3y: 6;
-  --c4x: 7;
-  --c4y: 5;
+  --c4x: 4;
+  --c4y: 4;
 }
 main section > *:nth-child(8n) {
-  --rotate: -2deg;
+  --rotate: -3deg;
   --block-bg: var(--bg-4);
-  --c1x: 2;
-  --c1y: 7;
-  --c2x: 6;
-  --c2y: 6;
-  --c3x: 6;
-  --c3y: 7;
-  --c4x: 5;
+  --c1x: 4;
+  --c1y: 4;
+  --c2x: 3;
+  --c2y: 3;
+  --c3x: 5;
+  --c3y: 2;
+  --c4x: 3;
   --c4y: 5;
 }
 main section > *:nth-child(9n) {
   --rotate: 2deg;
   --block-bg: var(--bg-5);
-  --c1x: 4;
-  --c1y: 7;
-  --c2x: 4;
-  --c2y: 3;
-  --c3x: 3;
-  --c3y: 7;
-  --c4x: 2;
+  --c1x: 2;
+  --c1y: 5;
+  --c2x: 2;
+  --c2y: 6;
+  --c3x: 1;
+  --c3y: 3;
+  --c4x: 7;
   --c4y: 1;
 }
 main section > *:nth-child(10n) {
-  --rotate: 1deg;
+  --rotate: -1deg;
   --block-bg: var(--bg-1);
-  --c1x: 1;
-  --c1y: 4;
-  --c2x: 3;
-  --c2y: 1;
+  --c1x: 2;
+  --c1y: 7;
+  --c2x: 7;
+  --c2y: 7;
   --c3x: 5;
-  --c3y: 7;
+  --c3y: 3;
   --c4x: 7;
-  --c4y: 2;
+  --c4y: 5;
 }
 @supports (display: grid) and (--css: vars) {
   main section > * {
@@ -972,8 +972,10 @@ main h3 {
   margin: var(--shim);
 }
 
-.profile {
-  margin-right: var(--gutter);
+@media (min-width: 58em) {
+  .profile {
+    margin-right: var(--gutter);
+  }
 }
 .profile h4 {
   margin: 0;
@@ -992,6 +994,7 @@ main h3 {
   grid-gap: var(--gutter);
   grid-template-columns: repeat(auto-fit, minmax(15ch, 25ch));
   justify-content: safe center;
+  padding: 0;
 }
 [id=styles] li {
   list-style: none;

@@ -114,7 +114,9 @@ main {
 }
 
 .profile {
-  margin-right: var(--gutter);
+  @include config.above('wide-break') {
+    margin-right: var(--gutter);
+  }
 
   h4 {
     margin: 0;
