@@ -4,7 +4,7 @@
 main {
   article,
   .container {
-    display: grid;
+    display: var(--grid);
     grid-gap: var(--gap,  var(--spacer));
   }
 
@@ -27,7 +27,6 @@ main {
         calc(var(--c4x) * var(--quarter-shim)) calc(100% - var(--c4y) * var(--quarter-shim))
       );
       grid-column: var(--column, main);
-      margin: 0;
       padding: var(--gutter);
       transform: rotate(var(--rotate));
 
@@ -44,6 +43,10 @@ main {
           --c4x: #{math.random(7)};
           --c4y: #{math.random(7)};
         }
+      }
+
+      @supports (display: grid) and (--css: vars) {
+        margin: 0;
       }
     }
   }

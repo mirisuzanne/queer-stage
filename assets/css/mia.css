@@ -448,6 +448,7 @@ html {
   --wide-page: 38rem;
   --wide-break: 58em;
   font-family: Verdana, Geneva, sans-serif;
+  --grid: grid;
   background: var(--flag) var(--bg) no-repeat fixed;
   color: var(--text);
   font-feature-settings: "dlig" 1, "liga" 1;
@@ -536,11 +537,17 @@ a:hover, a:focus, a:active {
 }
 
 body {
-  display: grid;
+  display: var(--grid);
   grid-row-gap: var(--spacer);
   grid-template-areas: "l1 head r" "nav nav r" "l2 main main" "l2 now r2" "l2 next r2" "l2 foot r2";
   grid-template-columns: var(--page-margin) auto var(--page-margin);
   justify-content: center;
+  margin: 1em;
+}
+@supports (display: grid) and (--css: vars) {
+  body {
+    margin: 0;
+  }
 }
 @media (min-width: 58em) {
   body {
@@ -574,9 +581,12 @@ main {
 
 header {
   padding: var(--page-margin);
+  text-align: center;
 }
 header .container {
-  display: grid;
+  display: flex;
+  display: var(--grid);
+  flex-direction: column;
   grid-column-gap: var(--gutter);
   grid-template: "h1" 1fr "h2" 1fr "se" auto "gh" auto/auto;
   justify-content: center;
@@ -601,17 +611,26 @@ header h2 {
   --casl:1;
   font-style: italic;
   --slnt:-15;
-  align-self: start;
   font-size: inherit;
   grid-area: h2;
   justify-self: center;
-  text-align: center;
   transform: rotate(var(--rotate, -3deg));
+}
+@supports (display: grid) {
+  header h2 {
+    align-self: start;
+  }
 }
 header p {
   align-self: center;
   grid-area: se;
-  margin: var(--shim) 0;
+  margin: var(--spacer) 0 var(--shim);
+}
+@supports (display: grid) {
+  header p {
+    margin: var(--shim) 0;
+    text-align: left;
+  }
 }
 header .link-github {
   align-self: center;
@@ -623,7 +642,6 @@ h1 {
   font-variation-settings: "MONO" var(--mono), "CASL" var(--casl), "wght" var(--wght), "slnt" var(--slnt), "ital" var(--ital);
   font-weight: bold;
   --wght:1000;
-  align-self: end;
   filter: drop-shadow(var(--shadow-bg));
   font-size: calc(var(--xbase, 2rem) + var(--xscale, 2vmin));
   grid-area: h1;
@@ -639,6 +657,12 @@ h1:hover {
   font-variation-settings: "MONO" var(--mono), "CASL" var(--casl), "wght" var(--wght), "slnt" var(--slnt), "ital" var(--ital);
   --casl:1;
 }
+@supports (display: grid) {
+  [id=styles] h2,
+h1 {
+    align-self: end;
+  }
+}
 @supports (background-clip: text) {
   [id=styles] h2,
 h1 {
@@ -652,9 +676,15 @@ h1 {
 nav {
   --line: transparent;
   font-size: var(--small);
+  margin: 2em 0;
+}
+@supports (display: grid) and (--css: vars) {
+  nav {
+    margin: 0;
+  }
 }
 nav ul {
-  display: grid;
+  display: var(--grid);
   grid-gap: var(--shim);
   margin: 0;
   padding: 0;
@@ -666,39 +696,39 @@ nav li {
 }
 nav li:nth-child(1) {
   --nav-bg: var(--fancy-3);
-  --nav-flex: 0.9872858229;
+  --nav-flex: 0.1542263749;
   --rand-a: 7;
   --rand-b: 2;
 }
 nav li:nth-child(2) {
   --nav-bg: var(--fancy-2);
-  --nav-flex: 0.6474378681;
+  --nav-flex: 0.0314041554;
   --rand-a: 4;
-  --rand-b: 11;
+  --rand-b: 3;
 }
 nav li:nth-child(3) {
   --nav-bg: var(--fancy-3);
-  --nav-flex: 0.0531014849;
-  --rand-a: 10;
-  --rand-b: 1;
+  --nav-flex: 0.18502384;
+  --rand-a: 9;
+  --rand-b: 7;
 }
 nav li:nth-child(4) {
-  --nav-bg: var(--fancy-3);
-  --nav-flex: 0.7764821161;
-  --rand-a: 9;
-  --rand-b: 5;
+  --nav-bg: var(--fancy-2);
+  --nav-flex: 0.3446723453;
+  --rand-a: 7;
+  --rand-b: 12;
 }
 nav li:nth-child(5) {
-  --nav-bg: var(--fancy-2);
-  --nav-flex: 0.6706659406;
-  --rand-a: 2;
+  --nav-bg: var(--fancy-3);
+  --nav-flex: 0.6110587817;
+  --rand-a: 11;
   --rand-b: 10;
 }
 nav li:nth-child(6) {
-  --nav-bg: var(--fancy-3);
-  --nav-flex: 0.0579232961;
-  --rand-a: 4;
-  --rand-b: 8;
+  --nav-bg: var(--fancy-2);
+  --nav-flex: 0.3648892499;
+  --rand-a: 5;
+  --rand-b: 1;
 }
 nav a:link, nav a:visited {
   --depth: var(--quarter-shim);
@@ -742,7 +772,7 @@ nav a:hover, nav a:focus, nav a:active {
   --static-a: var(--half-shim);
   --static-b: var(--quarter-shim);
   --rand-a: 4;
-  --rand-b: 1;
+  --rand-b: 2;
   --depth: inherit;
   --nav-bg: var(--fancy);
   z-index: 1;
@@ -750,7 +780,7 @@ nav a:hover, nav a:focus, nav a:active {
 
 main article,
 main .container {
-  display: grid;
+  display: var(--grid);
   grid-gap: var(--gap, var(--spacer));
 }
 main section {
@@ -762,129 +792,133 @@ main section > * {
   background: var(--block-bg, var(--bg));
   clip-path: polygon(calc(var(--c1x) * var(--quarter-shim)) calc(var(--c1y) * var(--quarter-shim)), calc(100% - var(--c2x) * var(--quarter-shim)) calc(var(--c2y) * var(--quarter-shim)), calc(100% - var(--c3x) * var(--quarter-shim)) calc(100% - var(--c3y) * var(--quarter-shim)), calc(var(--c4x) * var(--quarter-shim)) calc(100% - var(--c4y) * var(--quarter-shim)));
   grid-column: var(--column, main);
-  margin: 0;
   padding: var(--gutter);
   transform: rotate(var(--rotate));
 }
 main section > *:nth-child(1n) {
-  --rotate: -2deg;
+  --rotate: 0deg;
   --block-bg: var(--bg-2);
-  --c1x: 2;
-  --c1y: 6;
+  --c1x: 5;
+  --c1y: 1;
   --c2x: 3;
-  --c2y: 7;
+  --c2y: 3;
   --c3x: 6;
-  --c3y: 5;
-  --c4x: 3;
+  --c3y: 7;
+  --c4x: 7;
   --c4y: 5;
 }
 main section > *:nth-child(2n) {
-  --rotate: -2deg;
+  --rotate: 0deg;
   --block-bg: var(--bg-3);
-  --c1x: 7;
+  --c1x: 4;
   --c1y: 1;
-  --c2x: 5;
-  --c2y: 5;
-  --c3x: 7;
-  --c3y: 1;
-  --c4x: 2;
-  --c4y: 5;
-}
-main section > *:nth-child(3n) {
-  --rotate: 4deg;
-  --block-bg: var(--bg-4);
-  --c1x: 2;
-  --c1y: 7;
-  --c2x: 4;
-  --c2y: 1;
-  --c3x: 3;
-  --c3y: 4;
-  --c4x: 7;
-  --c4y: 7;
-}
-main section > *:nth-child(4n) {
-  --rotate: 4deg;
-  --block-bg: var(--bg-5);
-  --c1x: 6;
-  --c1y: 2;
   --c2x: 7;
-  --c2y: 2;
-  --c3x: 5;
-  --c3y: 3;
-  --c4x: 1;
-  --c4y: 6;
-}
-main section > *:nth-child(5n) {
-  --rotate: 4deg;
-  --block-bg: var(--bg-1);
-  --c1x: 6;
-  --c1y: 5;
-  --c2x: 3;
-  --c2y: 2;
-  --c3x: 1;
-  --c3y: 6;
-  --c4x: 3;
-  --c4y: 7;
-}
-main section > *:nth-child(6n) {
-  --rotate: 1deg;
-  --block-bg: var(--bg-2);
-  --c1x: 3;
-  --c1y: 3;
-  --c2x: 4;
-  --c2y: 4;
-  --c3x: 2;
-  --c3y: 6;
-  --c4x: 1;
+  --c2y: 1;
+  --c3x: 6;
+  --c3y: 5;
+  --c4x: 2;
   --c4y: 3;
 }
-main section > *:nth-child(7n) {
-  --rotate: -2deg;
-  --block-bg: var(--bg-3);
-  --c1x: 3;
-  --c1y: 4;
-  --c2x: 1;
-  --c2y: 3;
-  --c3x: 3;
-  --c3y: 3;
+main section > *:nth-child(3n) {
+  --rotate: 2deg;
+  --block-bg: var(--bg-4);
+  --c1x: 4;
+  --c1y: 6;
+  --c2x: 3;
+  --c2y: 7;
+  --c3x: 4;
+  --c3y: 7;
   --c4x: 1;
   --c4y: 2;
 }
-main section > *:nth-child(8n) {
-  --rotate: 4deg;
-  --block-bg: var(--bg-4);
+main section > *:nth-child(4n) {
+  --rotate: 2deg;
+  --block-bg: var(--bg-5);
   --c1x: 6;
-  --c1y: 2;
-  --c2x: 6;
-  --c2y: 1;
-  --c3x: 3;
-  --c3y: 6;
-  --c4x: 5;
+  --c1y: 6;
+  --c2x: 4;
+  --c2y: 5;
+  --c3x: 6;
+  --c3y: 4;
+  --c4x: 7;
   --c4y: 4;
 }
-main section > *:nth-child(9n) {
-  --rotate: -1deg;
-  --block-bg: var(--bg-5);
-  --c1x: 3;
-  --c1y: 1;
-  --c2x: 1;
-  --c2y: 6;
-  --c3x: 2;
-  --c3y: 1;
-  --c4x: 4;
-  --c4y: 1;
-}
-main section > *:nth-child(10n) {
+main section > *:nth-child(5n) {
   --rotate: -1deg;
   --block-bg: var(--bg-1);
+  --c1x: 1;
+  --c1y: 2;
+  --c2x: 7;
+  --c2y: 4;
+  --c3x: 6;
+  --c3y: 1;
+  --c4x: 4;
+  --c4y: 6;
+}
+main section > *:nth-child(6n) {
+  --rotate: -3deg;
+  --block-bg: var(--bg-2);
+  --c1x: 1;
+  --c1y: 7;
+  --c2x: 2;
+  --c2y: 5;
+  --c3x: 5;
+  --c3y: 5;
+  --c4x: 4;
+  --c4y: 7;
+}
+main section > *:nth-child(7n) {
+  --rotate: 3deg;
+  --block-bg: var(--bg-3);
+  --c1x: 1;
+  --c1y: 7;
+  --c2x: 5;
+  --c2y: 2;
+  --c3x: 6;
+  --c3y: 6;
+  --c4x: 7;
+  --c4y: 5;
+}
+main section > *:nth-child(8n) {
+  --rotate: -2deg;
+  --block-bg: var(--bg-4);
+  --c1x: 2;
+  --c1y: 7;
+  --c2x: 6;
+  --c2y: 6;
+  --c3x: 6;
+  --c3y: 7;
+  --c4x: 5;
+  --c4y: 5;
+}
+main section > *:nth-child(9n) {
+  --rotate: 2deg;
+  --block-bg: var(--bg-5);
   --c1x: 4;
   --c1y: 7;
   --c2x: 4;
-  --c2y: 5;
-  --c3x: 4;
-  --c3y: 4;
-  --c4x: 5;
-  --c4y: 4;
+  --c2y: 3;
+  --c3x: 3;
+  --c3y: 7;
+  --c4x: 2;
+  --c4y: 1;
+}
+main section > *:nth-child(10n) {
+  --rotate: 1deg;
+  --block-bg: var(--bg-1);
+  --c1x: 1;
+  --c1y: 4;
+  --c2x: 3;
+  --c2y: 1;
+  --c3x: 5;
+  --c3y: 7;
+  --c4x: 7;
+  --c4y: 2;
+}
+@supports (display: grid) and (--css: vars) {
+  main section > * {
+    margin: 0;
+  }
 }
 main h2 {
   --column: full;
@@ -946,7 +980,7 @@ main h3 {
 }
 
 [id=styles] {
-  display: grid;
+  display: var(--grid);
   min-height: 100vh;
   align-content: safe center;
 }
@@ -954,7 +988,7 @@ main h3 {
   text-align: center;
 }
 [id=styles] ul {
-  display: grid;
+  display: var(--grid);
   grid-gap: var(--gutter);
   grid-template-columns: repeat(auto-fit, minmax(15ch, 25ch));
   justify-content: safe center;
@@ -984,7 +1018,7 @@ main h3 {
 
 .page-footer {
   background: var(--alt-flag) fixed;
-  display: grid;
+  display: var(--grid);
   font-size: var(--xsmall);
   margin: var(--gutter) 0 var(--spacer);
   place-content: safe center;

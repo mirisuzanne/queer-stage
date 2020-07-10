@@ -3,6 +3,7 @@
 html {
   @include config.sizes--();
   @include config.font-family('static');
+  --grid: grid; // only use grid when variables are supported
   background: var(--flag) var(--bg) no-repeat fixed;
   color: var(--text);
   font-feature-settings: 'dlig' 1, 'liga' 1;

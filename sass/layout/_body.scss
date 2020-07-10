@@ -1,7 +1,7 @@
 @use '../config';
 
 body {
-  display: grid;
+  display: var(--grid);
   grid-row-gap: var(--spacer);
   grid-template-areas:
     'l1 head r'
@@ -15,6 +15,11 @@ body {
     var(--page-margin) auto var(--page-margin)
   ;
   justify-content: center;
+  margin: 1em;
+
+  @supports (display: grid) and (--css: vars) {
+    margin: 0;
+  }
 
   @include config.above('wide-break') {
     grid-template:

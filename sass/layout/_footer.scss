@@ -2,7 +2,7 @@
 
 .page-footer {
   background: var(--alt-flag) fixed;
-  display: grid;
+  display: var(--grid);
   font-size: var(--xsmall);
   margin: var(--gutter) 0 var(--spacer);
   place-content: safe center;

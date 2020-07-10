@@ -4,9 +4,14 @@
 nav {
   --line: transparent;
   font-size: var(--small);
+  margin: 2em 0;
+
+  @supports (display: grid) and (--css: vars) {
+    margin: 0;
+  }
 
   ul {
-    display: grid;
+    display: var(--grid);
     grid-gap: var(--shim);
     margin: 0;
     padding: 0;

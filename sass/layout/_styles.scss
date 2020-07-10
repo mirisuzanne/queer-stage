@@ -1,7 +1,7 @@
 @use '../config';
 
 [id='styles'] {
-  display: grid;
+  display: var(--grid);
   min-height: 100vh;
   align-content: safe center;
 
@@ -10,7 +10,7 @@
   }
 
   ul {
-    display: grid;
+    display: var(--grid);
     grid-gap: var(--gutter);
     grid-template-columns: repeat(auto-fit, minmax(15ch, 25ch));
     justify-content: safe center;

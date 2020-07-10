@@ -2,9 +2,12 @@
 
 header {
   padding: var(--page-margin);
+  text-align: center;
 
   .container {
-    display: grid;
+    display: flex;
+    display: var(--grid);
+    flex-direction: column;
     grid-column-gap: var(--gutter);
     grid-template:
       'h1' 1fr
@@ -39,18 +42,25 @@ header {
 
   h2 {
     @include config.font-settings('fun' 'italic');
-    align-self: start;
     font-size: inherit;
     grid-area: h2;
     justify-self: center;
-    text-align: center;
     transform: rotate(var(--rotate, -3deg));
+
+    @supports (display: grid) {
+      align-self: start;
+    }
   }
 
   p {
     align-self: center;
     grid-area: se;
-    margin: var(--shim) 0;
+    margin: var(--spacer) 0 var(--shim);
+
+    @supports (display: grid) {
+      margin: var(--shim) 0;
+      text-align: left;
+    }
   }
 
   .link-github {
@@ -62,7 +72,6 @@ header {
 [id='styles'] h2,
 h1 {
   @include config.font-settings('extra');
-  align-self: end;
   filter: drop-shadow(var(--shadow-bg));
   font-size: config.size('h1');
   grid-area: h1;
@@ -75,6 +84,10 @@ h1 {
 
   &:hover {
     @include config.font-settings('fun');
+  }
+
+  @supports (display: grid) {
+    align-self: end;
   }
 
   @supports (background-clip: text) {
